@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special for Syafirajin</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #fff5f7;
+            --primary-red: #ff4d6d;
+            --soft-pink: #ffb3c1;
+            --text-dark: #4a4a4a;
+        }
+
+        body, html {
+            margin: 0; padding: 0; height: 100%;
+            font-family: 'Quicksand', sans-serif;
+            background-color: var(--bg-color);
+            overflow-x: hidden;
+            touch-action: manipulation;
+        }
+
+        .container {
+            display: flex; justify-content: center; align-items: center;
+            min-height: 100vh; text-align: center; padding: 20px;
+        }
+
+        /* --- ENVELOPE --- */
+        #envelope-section { cursor: pointer; transition: 0.5s; z-index: 10; }
+        .envelope-wrapper { transform: scale(1); transition: 0.3s; }
+        .envelope-wrapper:hover { transform: scale(1.1); }
+
+        .envelope-svg { width: 120px; }
+        .instruction-text { font-size: 1.3rem; color: var(--text-dark); margin-top: 15px; font-weight: 600; }
+
+        /* --- CONTENT --- */
+        #main-content {
+            display: none; opacity: 0;
+            transition: opacity 1.5s ease;
+            max-width: 450px; width: 100%;
+            background: white; padding: 35px 25px;
+            border-radius: 30px;
+            box-shadow: 0 15px 40px rgba(255, 77, 109, 0.2);
+            border: 2px solid var(--soft-pink);
+        }
+
+        .photo-container { margin-bottom: 25px; }
+        .profile-img {
+            width: 200px; height: 200px; object-fit: cover;
+            border-radius: 50%; border: 6px solid white;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            color: var(--primary-red);
+            font-size: 2.3rem;
+            margin: 15px 0;
+        }
+
+        .love-letter {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: var(--text-dark);
+            white-space: pre-line;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .footer-text {
+            margin-top: 30px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.6rem;
+            color: var(--primary-red);
+            font-weight: bold;
+        }
+
+        .fade-in { display: block !important; opacity: 1 !important; }
+
+        /* HEART */
+        .heart {
+            position: fixed;
+            font-size: 20px;
+            color: var(--primary-red);
+            top: -10%;
+            z-index: -1;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(110vh) rotate(360deg); }
+        }
+    </style>
+</head>
+<body onmousedown="playMusicOnce()" ontouchstart="playMusicOnce()">
+
+    <audio id="mySong" loop preload="auto">
+        <source src="https://files.catbox.moe/i83b4j.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="container">
+
+        <div id="envelope-section" onclick="revealSurprise()">
+            <div class="envelope-wrapper">
+                <svg class="envelope-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" fill="#ff4d6d"/>
+                    <path d="M22 6L12 13L2 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="12" cy="12" r="3" fill="#ffb3c1"/>
+                </svg>
+                <div class="instruction-text">hey toton ajin <br> kamu dapat pesan baru!</div>
+                <p style="font-size: 0.8rem; color: #aaa;">(ketuk amplopnya)</p>
+            </div>
+        </div>
+
+        <div id="main-content">
+            <div class="photo-container">
+                <img src="https://i.ibb.co.com/kg40Xy2p/IMG-20260501-WA0126.jpg" class="profile-img" alt="Syafira">
+            </div>
+
+            <h1>SyafirajinMaudyayunda7D</h1>
+
+            <div class="love-letter">
+syafira maudy,
+
+maaf yaa… semalem aku ketiduran. aku tau harusnya aku bisa ngabarin kamu dulu, tapi bener-bener nggak kerasa dan akhirnya malah bikin kamu nunggu.
+
+aku minta maaf kalau itu bikin kamu kesel atau kepikiran. bukan maksud aku buat ngabaikan kamu, cuma aku lagi capek dan akhirnya ketiduran tanpa sadar.
+
+aku bakal coba lebih perhatian lagi ke depannya, minimal ngasih kabar dulu biar kamu nggak nunggu atau bingung.
+
+aku dimaafin kan?
+            </div>
+
+            <div class="footer-text">from, arsa sigmaboy</div>
+        </div>
+
+    </div>
+
+    <script>
+        const song = document.getElementById('mySong');
+        let musicStarted = false;
+
+        // Fungsi pemicu musik agar tidak diblokir browser
+        function playMusicOnce() {
+            if(!musicStarted) {
+                song.play().catch(e => console.log("Menunggu interaksi amplop..."));
+                musicStarted = true;
+            }
+        }
+
+        function revealSurprise() {
+            // PLAY MUSIC
+            song.play();
+
+            // SHOW CONTENT
+            document.getElementById('envelope-section').style.display = 'none';
+            document.getElementById('main-content').classList.add('fade-in');
+
+            startHearts();
+        }
+
+        function startHearts() {
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.innerHTML = '❤️';
+                heart.className = 'heart';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                heart.style.opacity = Math.random();
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 5000);
+            }, 400);
+        }
+    </script>
+
+</body>
+</html>
